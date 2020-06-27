@@ -2,7 +2,8 @@ import {
     SELECT_SUBREDDIT, 
     INVALIDATE_SUBREDDIT, 
     REQUEST_POSTS, 
-    RECEIVE_POSTS 
+    RECEIVE_POSTS ,
+    Artist_Info
 } from './constants'
 
 // Import fetch API in case of browser compatiblity issues
@@ -31,6 +32,14 @@ const requestPosts = (subreddit) => (
         subreddit
     }
 )
+
+export const ArtistInfo = (artist) => {
+    type: Artist_Info
+}
+
+const  getArtistInfo = (artist) => {
+    return fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Cher&api_key=4a55cba47db3eeb6f56276d253735331&format=json')
+}
 
 const recievePosts = (subreddit, json) => (
     {
